@@ -12,7 +12,7 @@ export default function NavBar({ active }) {
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
                         href="/artista"
-                        className={`${active === "artista" ? "text-rose-100" : "text-green-pastel"
+                        className={`${active === "artista" ? "text-creme" : "text-green-pastel"
                             }`}
                     >
                         Artista
@@ -21,7 +21,7 @@ export default function NavBar({ active }) {
                 <li>
                     <Link
                         href="/curador"
-                        className={`${active === "curador" ? "text-rose-100" : "text-green-pastel"}`}
+                        className={`${active === "curador" ? "text-creme" : "text-green-pastel"}`}
                     >
                         Curador
                     </Link>
@@ -29,7 +29,7 @@ export default function NavBar({ active }) {
                 <li>
                     <Link
                         href="/obra"
-                        className={`${active === "obra" ? "text-rose-100" : "text-green-pastel"
+                        className={`${active === "obra" ? "text-creme" : "text-green-pastel"
                             }`}
                     >
                         Obra
