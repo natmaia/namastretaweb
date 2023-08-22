@@ -5,7 +5,7 @@ export default function Obra() {
     <>
       <NavBar active={"obra"} />
 
-      <main className="bg-slate-900 m-20 p-8">
+      <main className="green-pastel-light m-20 p-8">
         <h2>Obra</h2>
       </main>
     </>
