@@ -3,7 +3,7 @@ import NavBar from "@/components/NavBar";
 
 async function getObras() {
   const url = "http://localhost:8080/api/obra"
-  const response = await fetch(url)
+  const response = await fetch(url, { next: { revalidate: 0 } })
   return response.json()
 }
 
