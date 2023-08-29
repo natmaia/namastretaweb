@@ -6,7 +6,13 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
+    extend:{
+      fontSize: {
+        '40': '40px',
+      },
+      lineHeight: {
+        '156': '155.99%',
+      },
       colors: {
         'creme': 'rgba(250, 246, 241, 1)',
       },
@@ -23,7 +29,6 @@ module.exports = {
         'collor-link' : 'rgba(36, 127, 74, 1)',
         'green': 'rgba(201, 216, 208, 1)',
         'cancel': 'rgba(125, 16, 16, 1)',
-
       },
     },
   },
