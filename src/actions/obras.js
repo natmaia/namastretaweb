@@ -3,16 +3,8 @@
 export async function create(formData) {
     const url = "http://localhost:8080/api/obra";
 
-    console.log(formData)
-
     // função que deixa o json formatado
-    console.log(Object.fromEntries(formData))
-    // const data =
-    //     {
-    //         titulo: "Título da Nova Obra",
-    //         descricao: "Descrição da Nova Obra"
-    //     }
-
+    // console.log(Object.fromEntries(formData))
     const options = {
         method: "POST",
         body: JSON.stringify(Object.fromEntries(formData)),
@@ -21,5 +13,19 @@ export async function create(formData) {
         }
     }
 
-    fetch(url, options)
+    const resp = await fetch(url, options);
+
+    if (resp.status !== 201) {
+        const json = await resp.json();
+        if (Array.isArray(json.errors)) {
+            const mensagens = json.errors.reduce((str, erro) => str += ". " + erro.message, "");
+            return { error: "Erro ao cadastrar" + mensagens };
+        } else {
+            return { error: "Erro ao cadastrar"};
+        }
+    }
+
+    revalidatePath("/contas");
+    return { ok: "Conta cadastrada com sucesso" };
+
 }

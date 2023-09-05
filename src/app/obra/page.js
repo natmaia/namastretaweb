@@ -14,8 +14,6 @@ async function getObras() {
 export default async function Obra() {
   const data = await getObras()
 
-  console.log(data)
-
   return (
     <>
       <NavBar active={"obra"} />
@@ -27,12 +25,14 @@ export default async function Obra() {
 
           {/* chama o button e faz as alterações via props */}
           <Button icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obra/new"> Criar Obra </Button>
-
         </div>
 
         <div className="grid gap-10 grid-cols-3">
-          {data && data.map(obra => <Card obra={obra} />)}
+          {data && data.map(obra => {
+            return <Card obra={obra} />
+          })}
         </div>
+
       </main>
     </>
   )
