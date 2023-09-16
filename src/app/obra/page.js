@@ -5,7 +5,7 @@ import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
 
 async function getObras() {
-  const url = "http://localhost:8080/api/obra";
+  const url = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
   const response = await fetch(url);
   console.log(response); // Debugging para verificar a resposta da API
   return response.json();
@@ -27,11 +27,11 @@ export default async function Obra() {
           <Button icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obra/new"> Criar Obra </Button>
         </div>
 
-        <div className="grid gap-10 grid-cols-3">
+        {/* <div className="grid gap-10 grid-cols-3">
           {data && data.map(obra => {
             return <Card obra={obra} />
           })}
-        </div>
+        </div> */}
 
       </main>
     </>
