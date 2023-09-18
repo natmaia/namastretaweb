@@ -18,6 +18,7 @@ export default function DropMenu() {
         <div>
             <Button
                 id="basic-button"
+                variant='primary'
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}

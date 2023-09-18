@@ -24,7 +24,7 @@ export default async function Obra() {
           <h2 className="=tex-green text-40"> Obras </h2>
 
           {/* chama o button e faz as alterações via props */}
-          <Button icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obra/new"> Criar Obra </Button>
+          <Button variant="primary" icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obra/new"> Criar Obra </Button>
         </div>
 
         {/* <div className="grid gap-10 grid-cols-3">
