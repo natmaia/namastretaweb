@@ -37,8 +37,8 @@ export default function NavBar({ active }) {
                 </li>
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
-                        href="/obras"
-                        className={`${active === "obras" ? "text-creme" : "text-green-pastel"
+                        href="/obra"
+                        className={`${active === "obra" ? "text-creme" : "text-green-pastel"
                             }`}
                     >
                         Obras
