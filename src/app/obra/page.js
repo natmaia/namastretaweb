@@ -16,7 +16,7 @@ export default async function Obra() {
 
   return (
     <>
-      <NavBar active={"obra"} />
+      <NavBar active={"obras"} />
 
       <main className="green-pastel-light mt-5 m-20 p-4 ">
         <div className="grid md:grid-cols-2 md:grid-rows-1 gap-2 m-4 space-x-96 justify-between items-center
@@ -24,7 +24,7 @@ export default async function Obra() {
           <h2 className="=tex-green text-40"> Obras </h2>
 
           {/* chama o button e faz as alterações via props */}
-          <Button variant="primary" icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obra/new"> Criar Obra </Button>
+          <Button variant="primary" icon={<PlusCircleIcon className="h-6 w-6"/>} href="/obras/new"> Criar Obra </Button>
         </div>
 
         {/* <div className="grid gap-10 grid-cols-3">

@@ -19,7 +19,7 @@ export default function FormObra() {
             setMessage(resp.error)
             return
         }
-        redirect("/obra")
+        redirect("/obras")
         // redirect é para direcionar ao finalizar. Se tudo der certo
     }
 
@@ -34,7 +34,7 @@ export default function FormObra() {
                     <TextInput name="descricao" id="descricao" label="descricao" />
                     
                     <div className="flex justify-around">
-                        <Button href="/obra" variant="tertiary" icon={<ArrowLeftIcon className="h6 w-6" />} >Cancelar</Button>
+                        <Button href="/obras" variant="tertiary" icon={<ArrowLeftIcon className="h6 w-6" />} >Cancelar</Button>
                         <Button element="button" variant="secundary" icon={<CheckIcon className="h6 w-6" />}>
                             Salvar
                         </Button>

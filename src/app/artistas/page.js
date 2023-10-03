@@ -6,7 +6,7 @@ export default function Artista() {
       <NavBar active={"artista"} />
 
       <main className="green-pastel-light m-20 p-8">
-        <h2>Artista</h2>
+        <h2>Artistas </h2>
       </main>
     </>
   )

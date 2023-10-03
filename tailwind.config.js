@@ -18,7 +18,7 @@ module.exports = {
         'green-pastel-light' : 'rgba(174, 193, 182, 1)',
         'green-pastel-dark': 'rgba(122, 153, 135, 1)',
         'text-green': 'rgba(50, 72, 58, 1)',
-        'collor-link' : 'rgba(36, 127, 74, 1)',
+        'collor-link' : 'rgba(36, 127, 74, 1)', 
         'green': 'rgba(201, 216, 208, 1)',
         'cancel': 'rgba(125, 16, 16, 1)',
       },
@@ -38,5 +38,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // ...
+    require('@tailwindcss/forms'),
+  ],
 }

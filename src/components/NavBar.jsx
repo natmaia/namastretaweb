@@ -12,16 +12,16 @@ export default function NavBar({ active }) {
             <ul className="flex space-x-40">
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
-                        href="/categoria"
-                        className={`${active === "categoria" ? "text-creme" : "text-green-pastel"}`}
+                        href="/categorias"
+                        className={`${active === "categorias" ? "text-creme" : "text-green-pastel"}`}
                     >
                         Categorias
                     </Link>
                 </li>
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
-                        href="/artista"
-                        className={`${active === "artista" ? "text-creme" : "text-green-pastel"
+                        href="/artistas"
+                        className={`${active === "artistas" ? "text-creme" : "text-green-pastel"
                             }`}
                     >
                         Artistas
@@ -29,28 +29,47 @@ export default function NavBar({ active }) {
                 </li>
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
-                        href="/curador"
-                        className={`${active === "curador" ? "text-creme" : "text-green-pastel"}`}
+                        href="/curadores"
+                        className={`${active === "curadores" ? "text-creme" : "text-green-pastel"}`}
                     >
                         Curadores
                     </Link>
                 </li>
                 <li className="flex w-600 justify-between items-start flex-shrink-0">
                     <Link
-                        href="/obra"
-                        className={`${active === "obra" ? "text-creme" : "text-green-pastel"
+                        href="/obras"
+                        className={`${active === "obras" ? "text-creme" : "text-green-pastel"
                             }`}
                     >
                         Obras
                     </Link>
 
                 </li>
+
+                {/* <li className="flex w-600 justify-between items-start flex-shrink-0">
+                    <Link
+                        href="/register"
+                        className={`${active === "register" ? "text-creme" : "text-green-pastel"
+                            }`}
+                    >
+                        Registro
+                    </Link>
+
+                </li> */}
+
+                <li className="flex w-600 justify-between items-start flex-shrink-0">
+                    <Link
+                        href="/login"
+                        className={`${active === "login" ? "text-creme" : "text-green-pastel"
+                            }`}
+                    >
+                        Login
+                    </Link>
+
+                </li>
             </ul>
-            <DropMenu/>
-            {/* <div className="h-12 w-12 rounded-full overflow-hidden">
-                <img src="https://i.pravatar.cc/100" alt="avatar do usuário" />
-                <DropMenu/>
-            </div> */}
+            <DropMenu />
+
         </nav>
     );
 }
