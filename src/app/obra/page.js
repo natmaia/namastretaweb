@@ -5,7 +5,7 @@ import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
 
 async function getObras() {
-  const url = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
+  //const url = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
   const response = await fetch(url);
   console.log(response); // Debugging para verificar a resposta da API
   return response.json();

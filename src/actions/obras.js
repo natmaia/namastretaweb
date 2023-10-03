@@ -1,7 +1,7 @@
 "use server"
 
 export async function create(formData) {
-    const url = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
+    //const url = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
 
     // função que deixa o json formatado
     // console.log(Object.fromEntries(formData))
