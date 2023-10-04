@@ -41,5 +41,9 @@ Aqui estão os desenvolvedores que contribuíram para este projeto:
 - **Nathália Maia**
   - Desenvolvimento do spring boot, next e designer.
 
+![Vinicius oliveira](https://github.com/natmaia/arquivosFotosReadme/blob/main/vinicius.jpg)
+- **Vinicius oliveira**
+  - Desenvolvimento de banco de dados.
+
 
 
