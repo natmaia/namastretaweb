@@ -37,13 +37,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Aqui estão os desenvolvedores que contribuíram para este projeto:
 
-![Nathalia Maia](https://github.com/natmaia/arquivosFotosReadme/blob/main/PerfilFront.png)
-- **Nathália Maia**
-  - Desenvolvimento do spring boot, next e designer.
-
-![Vinicius oliveira](https://github.com/natmaia/arquivosFotosReadme/blob/main/vinicius.jpg)
-- **Vinicius oliveira**
-  - Desenvolvimento de banco de dados.
-
+<div>
+  <a href="https://github.com/natmaia" >
+    <img align="center" alt="Nathalia Maia" height="150" width="150" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/PerfilFront.png" />
+  </a>
+  
+  <a href="[https://github.com/link-do-perfil-do-desenvolvedor-2](https://github.com/ViniOlr)">
+    <img align="center" alt="Vinicius Oliveira" height="150" width="150" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/vinicius.jpg" />
+  </a>
+</div>
 
 
