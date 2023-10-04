@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
 ## Getting Started
 
 First, run the development server:
@@ -44,7 +45,13 @@ Aqui estão os desenvolvedores que contribuíram para este projeto:
   
   <a href="https://github.com/ViniOlr">
     <img align="center" alt="Vinicius Oliveira" height="150" width="150" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/vinicius.jpg" />
-  </a>
+  </a>  
 </div>
+<br>
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=natmaia&repo=namastretaweb&layout=compact)
+
+
+
 
 
