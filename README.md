@@ -42,7 +42,7 @@ Aqui estão os desenvolvedores que contribuíram para este projeto:
     <img align="center" alt="Nathalia Maia" height="150" width="150" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/PerfilFront.png" />
   </a>
   
-  <a href="[https://github.com/link-do-perfil-do-desenvolvedor-2](https://github.com/ViniOlr)">
+  <a href="https://github.com/ViniOlr">
     <img align="center" alt="Vinicius Oliveira" height="150" width="150" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/vinicius.jpg" />
   </a>
 </div>
