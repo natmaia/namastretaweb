@@ -15,7 +15,7 @@ export default function Button({ children, icon, variant = "primary", element = 
         <>
             {element == "link" ?
 
-                <Link href="&" {...props} className={variantClass}>
+                <Link href="#" {...props} className={variantClass}>
                     {/* possibilita mudar o icone na instancia */}
                     {icon}
                     {/* possibilita mudar o texto */}
