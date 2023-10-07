@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 // verificar o http do deploy, tive que fazer outra deploy
-const API_URL = "https://backend-namastreta-production.up.railway.app:8080/api/obra";
+const API_URL = "https://namastretagallery-springboot-production.up.railway.app/api/obra";
 
 export async function createObra(formData) {
     const options = {
@@ -27,6 +27,18 @@ export async function createObra(formData) {
     }
 
     return { ok: "Obra cadastrada com sucesso" };
+}
+
+export async function getObras() {
+    try {
+        const response = await fetch(`${API_URL}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Erro ao buscar obras:", error);
+        throw error; 
+        
+    }
 }
 
 export async function getObraById(id) {
@@ -57,4 +69,3 @@ export async function deleteObra(id) {
     await fetch(`${API_URL}/${id}`, options);
 }
 
-}
