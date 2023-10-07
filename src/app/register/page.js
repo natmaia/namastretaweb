@@ -61,7 +61,8 @@ const Registre = () => {
         };
         console.log(JSON.stringify(json));
 
-        router.push('/curadores');
+        router.push('/login');
+
     };
 
     const handleInputChange = (e) => {

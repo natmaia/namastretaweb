@@ -5,7 +5,7 @@ export default function Button({ children, icon, variant = "primary", element = 
         primary: "inline-flex px-[20px] py-[14px] rounded justify-center items-center gap-2 rounded-lg bg-green-pastel-dark hover:bg-green",
         secundary: "inline-flex px-[20px] py-[14px]  rounded justify-center items-center gap-8 rounded-5 bg-green-pastel-light hover:bg-green",
         tertiary: "inline-flex px-[20px] py-[14px]  rounded gap-2 justify-center items-center  text-cancel border border-solid border-cancel  hover:bg-cancel hover:text-creme",
-        quaternary:"inline-flex p-14px p-20px justify-center items-center gap-8px rounded-5px text-green-pastel-dark gap-2 m-10"
+        quaternary:"inline-flex p-[14px] justify-center items-center gap-8px rounded-5px text-green-pastel-dark gap-2 m-10"
 
     }
 

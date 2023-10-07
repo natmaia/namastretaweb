@@ -1,17 +1,17 @@
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/outline'
 
-export default function Card({obras}) {
+export default function Card({props}) {
     return (
         <div>
             <div className="grid md:grid-cols-2 md:grid-rows-1 md:p-1 gap-10 rounded-md bg-green justify-center items-center">
                 <div id="data" className="md:col-span-1">
                     <div id="data-col" className="p-4">
                         <div className="mb-auto">
-                            <span className="font-bold text-xl">{obras.titulo}</span>
+                            <span className="font-bold text-xl">{props.nome}</span>
                         </div>
                         <div className="mb-2">
-                            <span>{obras.descricao}</span>
+                            <span>{props.descricao}</span>
                         </div>
                         <div className="grid md:grid-cols-2 mt-auto">
                             <span className="text-green-800">Ver mais</span>
