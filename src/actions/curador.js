@@ -1,8 +1,11 @@
 "use server"
-const API_URL = "https://namastretagallery-springboot-production.up.railway.app/api/curador"; 
+
+import { revalidatePath } from "next/cache";
+
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL + "/curador";
 
 export async function getAllCuradores(nome, page) {
-  const response = await fetch(`${API_URL}?nome=${nome}&page=${page}`);
+  const response = await fetch(API_URL);
   const data = await response.json();
   return data;
 }
@@ -17,8 +20,24 @@ export async function createCurador(curador) {
   };
 
   const resp = await fetch(API_URL, options);
-  const data = await resp.json();
-  return data;
+
+  if (resp.status !== 201) {
+
+    console.log(resp.status)
+
+    const json = await resp.json();
+
+    const mensagens = json?.reduce((str, erro) => str += " "+ erro.field +" " + erro.message, "")
+
+    return { error: "Erro ao cadastrar" + mensagens }
+  }
+  console.log(resp.status)
+
+  revalidatePath("/curadores")
+
+  return { ok: "curador cadastrado com sucesso!!" }
+
+
 }
 
 export async function getCuradorById(id) {
@@ -46,5 +65,14 @@ export async function deleteCurador(id) {
     method: "DELETE"
   };
 
-  await fetch(`${API_URL}/${id}`, options);
+  const response = await fetch(`${API_URL}/${id}`, options);
+
+  if (!response.ok) {
+    console.log(response.status)
+    return { error: "Falha ao apagar o curador. " }
+
+}
+revalidatePath("/curadores")
+return { ok: "Curador deletado com sucesso" }
+
 }

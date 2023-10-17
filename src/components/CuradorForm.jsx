@@ -1,125 +1,121 @@
-import React, { useState } from 'react';
-import TextInput from "@/components/TextInput";
-import { createCurador } from "@/actions/curador";
+'use client'
 
-export default function CuradorForm({ onClose, onCuradorCreated }) {
-    const [curadorData, setCuradorData] = useState({
-        nome: "",
-        descricao: "",
-        foto: null, // objeto de arquivo
-        categoria: "",
-        tempoAtuacao: ""
+import { useState } from 'react';
+import TextInput from './TextInput';
+import Button from './Button';
+import { createCurador } from '@/actions/curador';
+import { useRouter } from "next/navigation"
+import toast from 'react-hot-toast';
+
+const CuradorForm = () => {
+
+    const { push } = useRouter();
+    const [formData, setFormData] = useState({
+        nome: '',
+        descricao: '',
+        foto: '',
+        categoria: '',
+        tempoAtuacao: ''
     });
+    const [fileInput, setFileInput] = useState(null);
 
-    const handleInputChange = (e) => {
-        const { name, value, type, files } = e.target;
-        if (type === "file") {
-            const file = files[0];
-            console.log("Objeto de arquivo:", file); 
-            setCuradorData(prevData => ({
-                ...prevData,
-                foto: file 
-            }));
-        } else {
-            setCuradorData(prevData => ({
-                ...prevData,
-                [name]: value
-            }));
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        setFileInput(file);
+    };
+
+    const handleImage = async () => {
+        if (!fileInput) {
+            toast.error('Por favor, selecione uma foto.');
+            return;
+        }
+
+        try {
+            const formdata = new FormData();
+            formdata.append('file', fileInput, fileInput.name);
+
+            const requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+            };
+            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/image/upload', requestOptions);
+            const result = await response.json()
+
+            return result.image;
+        } catch (error) {
+            toast.error('Erro ao enviar a foto:', error)
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await createCurador(curadorData);
-            onCuradorCreated(response);  // Atualize o estado do curador no componente pai
-            onClose();
-        } catch (error) {
-            console.error("Erro ao criar curador:", error);
+
+        const url = await handleImage();
+
+        const json = {
+            nome: formData.nome,
+            descricao: formData.descricao,
+            foto: url,
+            categoria: formData.categoria,
+            tempoAtuacao: formData.tempoAtuacao
+        };
+        console.log(JSON.stringify(json));
+
+        const response = await createCurador(json);
+
+        if (response.error) {
+            toast.error(response.error);
+            return;
         }
+
+        toast.success(response.ok);
+        push("/curadores")
+
     };
+
+    const handleInputChange = (field, value) => {
+        setFormData({ ...formData, [field]: value });
+    };
+
     return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="nome">Nome:</label>
+                <TextInput type="text" id="nome" name="nome" value={formData.nome} onChange={e => handleInputChange("nome", e.target.value)} />
+            </div>
+            <div>
+                <label htmlFor="descricao">Descrição:</label>
+                <TextInput type="text" id="descricao" name="descricao" value={formData.descricao} onChange={e => handleInputChange("descricao", e.target.value)} />
+            </div>
+            <div>
+                <label htmlFor="foto">Foto:</label>
+                <TextInput type="file" id="foto" onChange={handleFileInputChange} />
+            </div>
+            <div>
+                <label htmlFor="categorias">Categoria:</label>
+                <select id="categorias" name="categoria" value={formData.categoria} onChange={e => handleInputChange("categoria", e.target.value)}>
+                    <option value="" disabled>Selecione uma categoria</option>
+                    <option value="LOUCURAS_ABSTRATAS">LOUCURAS ABSTRATAS</option>
+                    <option value="MUNDO_SURREAL">MUNDO SURREAL</option>
+                    <option value="CORES_VIBRANTES">CORES VIBRANTES</option>
+                    <option value="EXPRESSOES_FANTASTICAS">EXPRESSÕES FANTÁSTICAS</option>
+                    <option value="FICCAO_CIENTIFICA_VISUAL">FICÇÃO CIENTÍFICA VISUAL</option>
+                    <option value="SONHOS_EM_TINTA">SONHOS EM TINTA</option>
+                    <option value="IMAGINACAO_DESENFREADA">IMAGINAÇÃO DESENFREADA</option>
+                    <option value="DIVERSAO_CRIATIVA">DIVERSÃO CRIATIVA</option>
+                    <option value="REALIDADE_ALTERNATIVA">REALIDADE ALTERNATIVA</option>
+                    <option value="CAOS_ARTISTICO">CAOS ARTÍSTICO</option>
+                </select>
+            </div>
+            <div>
+                <label htmlFor="tempoAtuacao">Tempo de Atuação:</label>
+                <TextInput type="text" id="tempoAtuacao" name="tempoAtuacao" value={formData.tempoAtuacao} onChange={e => handleInputChange("tempoAtuacao", e.target.value)} />
+            </div>
 
-        <div className="modal">
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label htmlFor="nome" className="block text-sm font-medium text-gray-600">
-                        Nome:
-                    </label>
-                    <TextInput
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        value={curadorData.nome}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="descricao" className="block text-sm font-medium text-gray-600">
-                        Descrição:
-                    </label>
-                    <TextInput
-                        as="textarea"
-                        id="descricao"
-                        name="descricao"
-                        value={curadorData.descricao}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="foto" className="block text-sm font-medium text-gray-600">
-                        Foto:
-                    </label>
-                    <TextInput
-                        type="file"
-                        id="foto"
-                        name="foto"
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="categoria" className="block text-sm font-medium text-gray-600">
-                        Categoria:
-                    </label>
-                    <select
-                        id="categoria"
-                        name="categoria"
-                        value={curadorData.categoria}
-                        onChange={handleInputChange}
-                        className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        required
-                    >
-                        <option value="">Selecione uma categoria</option>
-                        <option value="LOUCURAS_ABSTRATAS">Loucuras Abstratas</option>
-                        <option value="MUNDO_SURREAL">MUNDO SURREAL</option>
-                        {/* Adicione outras opções de categoria aqui */}
-                    </select>
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="tempoAtuacao" className="block text-sm font-medium text-gray-600">
-                        Tempo de Atuação:
-                    </label>
-                    <TextInput
-                        type="text"
-                        id="tempoAtuacao"
-                        name="tempoAtuacao"
-                        value={curadorData.tempoAtuacao}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-
-                <div className="flex justify-end space-x-4">
-                    <button type="submit">Criar Curador</button>
-                </div>
-            </form>
-        </div>
+            <Button element="button" >Enviar</Button>
+        </form>
     );
-}
+};
+
+export default CuradorForm;
