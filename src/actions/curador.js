@@ -1,16 +1,14 @@
-"use server"
+"use server";
 
 import { revalidatePath } from "next/cache";
 
 const API_URL = process.env.NEXT_PUBLIC_BASE_URL + "/curador";
 
-export async function getAllCuradores(nome, page) {
+export async function getAllCuradores() {
   const response = await fetch(API_URL);
 
-  
   const data = await response.json();
 
-  console.log(data)
   return data;
 }
 
@@ -19,31 +17,29 @@ export async function createCurador(curador) {
     method: "POST",
     body: JSON.stringify(curador),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const resp = await fetch(API_URL, options);
 
   if (resp.status !== 201) {
-
-    console.log(resp.status)
-
     const json = await resp.json();
 
-    console.log(json)
+    console.log(json);
 
-    const mensagens = json?.reduce((str, erro) => str += " "+ erro.field +" " + erro.message, " ")
+    const mensagens = json?.reduce(
+      (str, erro) => (str += erro.message + "\n"),
+      " "
+    );
 
-    return { error: "Erro ao cadastrar" + json.message }
+    return { error: mensagens };
   }
-  console.log(resp.status)
+  console.log(resp.status);
 
-  revalidatePath("/curadores")
+  revalidatePath("/curadores");
 
-  return { ok: "curador cadastrado com sucesso!!" }
-
-
+  return { ok: "curador cadastrado com sucesso!!" };
 }
 
 export async function getCuradorById(id) {
@@ -57,8 +53,8 @@ export async function updateCurador(id, curador) {
     method: "PUT",
     body: JSON.stringify(curador),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const resp = await fetch(`${API_URL}/${id}`, options);
@@ -68,17 +64,15 @@ export async function updateCurador(id, curador) {
 
 export async function deleteCurador(id) {
   const options = {
-    method: "DELETE"
+    method: "DELETE",
   };
 
   const response = await fetch(`${API_URL}/${id}`, options);
 
   if (!response.ok) {
-    console.log(response.status)
-    return { error: "Falha ao apagar o curador. " }
-
+    console.log(response.status);
+    return { error: "Falha ao apagar o curador. " };
   }
-  revalidatePath("/curadores")
-  return { ok: "Curador deletado com sucesso" }
-
+  revalidatePath("/curadores");
+  return { ok: "Curador deletado com sucesso" };
 }
