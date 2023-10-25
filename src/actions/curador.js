@@ -6,7 +6,11 @@ const API_URL = process.env.NEXT_PUBLIC_BASE_URL + "/curador";
 
 export async function getAllCuradores(nome, page) {
   const response = await fetch(API_URL);
+
+  
   const data = await response.json();
+
+  console.log(data)
   return data;
 }
 
@@ -27,9 +31,11 @@ export async function createCurador(curador) {
 
     const json = await resp.json();
 
-    const mensagens = json?.reduce((str, erro) => str += " "+ erro.field +" " + erro.message, "")
+    console.log(json)
 
-    return { error: "Erro ao cadastrar" + mensagens }
+    const mensagens = json?.reduce((str, erro) => str += " "+ erro.field +" " + erro.message, " ")
+
+    return { error: "Erro ao cadastrar" + json.message }
   }
   console.log(resp.status)
 
@@ -71,8 +77,8 @@ export async function deleteCurador(id) {
     console.log(response.status)
     return { error: "Falha ao apagar o curador. " }
 
-}
-revalidatePath("/curadores")
-return { ok: "Curador deletado com sucesso" }
+  }
+  revalidatePath("/curadores")
+  return { ok: "Curador deletado com sucesso" }
 
 }

@@ -5,14 +5,6 @@ import DropCard from './DropCard';
 
 export default function Card({ curador }) {
 
-    const handleDelete = async () => {
-        const response = await deleteCurador(curador.id)
-        if (response?.error) {
-            toast.error(response.error)
-        }
-        toast.success(response.ok)
-
-    }
 
     return (
         <div>
@@ -37,7 +29,7 @@ export default function Card({ curador }) {
                     </div>
 
                     <div className="flex justify-end mt-auto">
-                        <DropCard/>
+                        <DropCard curador={curador}/>
                     </div>
                 </div>
             </div>

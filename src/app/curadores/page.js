@@ -21,7 +21,7 @@ export default async function Curador() {
         <div className="grid gap-10 grid-cols-3">
           {data._embedded.curadores.map(curador => (
             <Card key={curador.id} curador={curador}>
-              <button onClick={() => console.log("sou bonito")}>Excluir</button>
+              {/* <button onClick={() => console.log("sou bonito")}>Excluir</button> */}
             </Card>
           ))}
         </div>
