@@ -65,7 +65,7 @@ const CuradorForm = () => {
 
     const response = await createCurador(json);
 
-    console.log(response)
+    console.log(response);
 
     if (response.error) {
       toast.error(response.error);
@@ -114,9 +114,7 @@ const CuradorForm = () => {
           value={formData.categoria}
           onChange={(e) => handleInputChange("categoria", e.target.value)}
         >
-          <option value={null}>
-            Selecione uma categoria
-          </option>
+          <option value="">Selecione uma categoria</option>
           <option value="LOUCURAS_ABSTRATAS">LOUCURAS ABSTRATAS</option>
           <option value="MUNDO_SURREAL">MUNDO SURREAL</option>
           <option value="CORES_VIBRANTES">CORES VIBRANTES</option>
