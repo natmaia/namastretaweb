@@ -1,10 +1,13 @@
-import { createObra } from "@/actions/obras"; 
+
+'use client'
+
+import { createObra } from "@/actions/obras";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import TextInput from "@/components/TextInput";
 import { ArrowLeftIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { useRouter } from "next/router"; 
 
 export default function FormObra() {
     const router = useRouter(); 
