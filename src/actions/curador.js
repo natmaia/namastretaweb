@@ -29,7 +29,7 @@ export async function createCurador(curador) {
     console.log(json);
 
     const mensagens = json?.reduce(
-      (str, erro) => (str += erro.message + "\n"),
+      (str, erro) => (str += ". " + erro.message + "\n"),
       " "
     );
 
@@ -44,11 +44,15 @@ export async function createCurador(curador) {
 
 export async function getCuradorById(id) {
   const response = await fetch(`${API_URL}/${id}`);
-  const data = await response.json();
-  return data;
+
+  const json = await response.json();
+  if (!response.ok) {
+    return { error: "Falha ao carregar Curador" + json.message };
+  }
+  return json;
 }
 
-export async function updateCurador(id, curador) {
+export async function updateCurador(curador) {
   const options = {
     method: "PUT",
     body: JSON.stringify(curador),
@@ -57,9 +61,18 @@ export async function updateCurador(id, curador) {
     },
   };
 
-  const resp = await fetch(`${API_URL}/${id}`, options);
-  const data = await resp.json();
-  return data;
+  const resp = await fetch(`${API_URL}/${curador.id}`, options);
+  if (!resp.ok) {
+    const mensagens = json?.reduce(
+      (str, erro) => (str += ". " + erro.message + "\n"),
+      ""
+    );
+    return { error: "Erro ao atualizar" + mensagens };
+  }
+
+  revalidatePath("/curadores");
+
+  return { ok: "curador alterado com sucesso" };
 }
 
 export async function deleteCurador(id) {

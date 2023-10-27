@@ -1,12 +1,14 @@
 import Link from "next/link";
 import DropMenu from "./dropMenu";
+import Logo from '@/images/svg/LogoDefault.svg'
+import Image from "next/image";
 
 export default function NavBar({ active }) {
     return (
         <nav className="bg-green-pastel-dark h-20 px-8 flex justify-between items-center">
             <div className="flex">
                 <Link href="/">
-                    <img src="LogoDefault.svg" alt="Logo Namastreta" className="w-40 h-60" />
+                    <Image src={Logo} alt="Logo Namastreta" className="w-40 h-60" />
                 </Link>
             </div>
             <ul className="flex space-x-40">

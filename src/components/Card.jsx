@@ -2,6 +2,7 @@
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Button from './Button';
 import DropCard from './DropCard';
+import Image from 'next/image';
 
 export default function Card({ curador }) {
 
@@ -24,7 +25,7 @@ export default function Card({ curador }) {
                     <div className="md:col-auto flex justify-center items-center">
                         {/* Use a URL da foto dinamicamente */}
                         <div className="mb-4 mt-3">
-                            <img src={curador.foto} alt="Imagem" className="w-auto h-auto" />
+                        <Image src={curador.foto} width={100} height={100} className="rounded-md overflow-hidden" />
                         </div>
                     </div>
 
