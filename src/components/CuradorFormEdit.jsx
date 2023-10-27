@@ -20,11 +20,9 @@ const CuradorFormEdit = ({ curador }) => {
 
       console.log(url);
 
-      SetCuradorEdit({ ...curadorEdit, foto: url });
+      handleInputChange("foto", url);
       console.log(curadorEdit.foto);
-
     }
-
 
     const response = await updateCurador(curadorEdit);
 

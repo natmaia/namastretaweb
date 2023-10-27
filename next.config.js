@@ -21,7 +21,13 @@ module.exports = {
         port: "",
         pathname: "/150",
       },
-
+      {
+        protocol: "https",
+        hostname: "api-namastreta.azurewebsites.net",
+        port: "",
+        pathname: "/**",
+      },
+      
     ],
   },
 };
